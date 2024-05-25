@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>weatherApp</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p class="title">Weather App</p>
+        <p class="citation">Weather api Provided By weatherapi.com/</p>
+      </header>
+      <main>
+        <ul>
+          <li>
+            <a href="./favoritecity.html"><p class="">Favorite Cities</p></a>
+          </li>
+          <li>
+            <a href="./allStoredWeather.html"> <p class="">All Cities</p></a>
+          </li>
+        </ul>
+        <form id="weatherForm">
+          <div id="loading-bar" class="loading-bar">
+            <div class="loading-progress"></div>
+          </div>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="city name"
+            required
+          />
+          <button id="button" type="submit">search</button>
+
+          <button id="saveFav">save favorite city</button>
+        </form>
+
+        <div id="weatherResult">
+          <h3 id="weatherInf">Weather Information</h3>
+          <p id="loading">loading ...</p>
+          <p id="cityName"></p>
+          <p id="country"></p>
+          <p id="temp_c"></p>
+          <img id="weatherIcon" src="" />
+          <p id="weatherType"></p>
+          <p id="localtime"></p>
+        </div>
+      </main>
+
+      <script>
+        const weatherForm = document.getElementById("weatherForm");
+        const loading = document.getElementById("loading");
+        const weatherInf = document.getElementById("weatherInf");
+        const cityName = document.getElementById("cityName");
+        const country = document.getElementById("country");
+        const temp_c = document.getElementById("temp_c");
+        const weatherIcon = document.getElementById("weatherIcon");
+        const weatherType = document.getElementById("weatherType");
+        const localtime = document.getElementById("localtime");
+        const button = document.getElementById("button");
+
+        weatherForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          loading.style.display = "block";
+          try {
+            const city = document.getElementById("city").value; //user input city name
+            //fetch weather data for the backend
+            const response = await fetch("http://localhost:3000/api/weather", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ city }), //on on the server side, req.body will be used to access city
+            });
+            const weatherData = await response.json();
+            //if weather is true
+            if (weatherData) {
+              weatherInf.style.display = "block"; //make weweatherInformation visible
+              loading.style.display = "none"; //hide loading after weather data is fetched
+            }
+
+            cityName.textContent = `City: ${weatherData.location.name}`;
+            country.textContent = `Country: ${weatherData.location.country}`;
+            temp_c.textContent = `Temp_C: ${weatherData.current.temp_c}`;
+            //src attribute of weather icon
+            weatherIcon.src = `${weatherData.current.condition.icon}`;
+            weatherType.textContent = `Condition: ${weatherData.current.condition.text}`;
+            localtime.textContent = `localtime: ${weatherData.location.localtime}`;
+          } catch (error) {
+            console.log("failed to fetch weather data", error);
+          }
+        });
+        //datasaving weather data into the database
+      </script>
+
+      <footer>
+        <p>&copy 2024</p>
+        <p>By Kabwali Muuka</p>
+      </footer>
+    </div>
+  </body>
+</html>

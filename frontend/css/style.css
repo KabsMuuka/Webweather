@@ -1,0 +1,104 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  background-color: #e7eaea;
+  padding: 5px;
+}
+.title {
+  flex-grow: 1;
+  text-align: start;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.citation {
+  text-align: end;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Hiding display element and making them visbie if condition is true*/
+h3 {
+  display: none;
+}
+#loading {
+  display: none;
+}
+/*End of Hide */
+
+main {
+  flex-grow: 1;
+  padding: 15px;
+}
+
+#weatherForm {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+input {
+  height: 28px;
+  border: solid, rgb(96, 164, 224);
+  border-radius: 5px;
+  font-size: large;
+}
+button {
+  margin-left: 5px;
+  height: 37px;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: solid rgb(112, 186, 99);
+}
+/* weather Information */
+#weatherResult {
+  width: 70%;
+  background-color: rgba(230, 230, 230, 0.574);
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#weatherResult p {
+  margin: 10px 0;
+}
+
+#weatherResult img {
+  max-width: 100px;
+  display: block;
+  margin: auto;
+}
+
+#cityName,
+#region,
+#country,
+#temp_c,
+#weatherIcon,
+#weatherType {
+  display: flex;
+  background-color: rgb(230, 230, 230);
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+/* End of weather Information */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: grey;
+}
