@@ -87,7 +87,7 @@ button {
 }
 
 #weatherResult img {
-  max-width: 100px;
+  max-width: 80px;
   display: block;
   margin: auto;
 }
@@ -96,8 +96,7 @@ button {
 #region,
 #country,
 #temp_c,
-#weatherIcon,
-#weatherType,
+#condition,
 #localtime {
   display: flex;
   background-color: rgb(230, 230, 230);

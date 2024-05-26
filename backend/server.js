@@ -18,18 +18,19 @@ app.post("/api/weather", async (req, res) => {
       .json({ error: "use propper City Names E.g. lusaka" });
   }
   try {
+    //fetch data from from an API, after appending {city} to it.
     const response = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=42e6202c53c94387b0d82647232012&q=${city}`
     );
     const weatherdata = await response.json();
     res.status(200).json(weatherdata); //send to the frontend
 
-    //destracturing weather data in order to save in properly into the database
+    //destructuring weather object properties from weatherdata
     const { name, country, localtime } = weatherdata.location;
     const { temp_c } = weatherdata.current;
     const { text } = weatherdata.current.condition;
 
-    //all data
+    //inserting weather properties into the database
     connection
       .promise()
       .query(
@@ -60,18 +61,19 @@ app.post("/favoriteCity", async (req, res) => {
       .json({ error: "use propper City Names E.g. lusaka" });
   }
   try {
+    //fetch data from from an API, after appending {city} to it.
     const response = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=42e6202c53c94387b0d82647232012&q=${city}`
     );
     const weatherdata = await response.json();
     res.status(200).json(weatherdata); //send to the frontend
 
-    //destracturing weather data in order to save in properly into the database
+    //destructuring weather object properties from weatherdata
     const { name, country, localtime } = weatherdata.location;
     const { temp_c } = weatherdata.current;
     const { text } = weatherdata.current.condition;
 
-    //favorite data
+    //inserting weather properties into the database
     connection
       .promise()
       .query(
@@ -94,7 +96,7 @@ app.post("/favoriteCity", async (req, res) => {
   }
 });
 
-//reterive All weatherdata from the database
+//retrieve All weatherdata from the database
 app.get("/storedData", (req, res) => {
   connection.query(`SELECT * FROM cities`, (error, result) => {
     if (error) throw error;
@@ -102,7 +104,7 @@ app.get("/storedData", (req, res) => {
   });
 });
 
-//reterive only favorte cities
+//retrieve Only favorte cities
 app.get("/favoriteCity", (req, res) => {
   connection.query(`SELECT * FROM favoriteCity`, (error, result) => {
     if (error) throw error;
@@ -110,7 +112,9 @@ app.get("/favoriteCity", (req, res) => {
   });
 });
 
+//listening on port 3000
 app.listen(port, () => {
+  //establishing a connection to mysql2 database
   connection.connect((err) => {
     if (err) {
       console.error("Error connecting to the database:", err.stack);

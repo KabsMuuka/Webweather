@@ -44,9 +44,9 @@
           <p id="cityName"></p>
           <p id="country"></p>
           <p id="temp_c"></p>
-          <img id="weatherIcon" src="" />
-          <p id="weatherType"></p>
           <p id="localtime"></p>
+          <p id="condition"></p>
+          <img id="weatherIcon" src="" />
         </div>
       </main>
 
@@ -60,11 +60,11 @@
         const cityName = document.getElementById("cityName");
         const country = document.getElementById("country");
         const temp_c = document.getElementById("temp_c");
-        const weatherIcon = document.getElementById("weatherIcon");
-        const weatherType = document.getElementById("weatherType");
+        const condition = document.getElementById("condition");
         const localtime = document.getElementById("localtime");
         const search = document.getElementById("search");
         const saveFavBtn = document.getElementById("saveFavBtn");
+        const weatherIcon = document.getElementById("weatherIcon");
 
         //when search button is clicked, fetch API sends a POST request to a server running at `port 3000`.
         search.addEventListener("click", async function (event) {
@@ -92,10 +92,10 @@
             cityName.textContent = `City: ${weatherData.location.name}`;
             country.textContent = `Country: ${weatherData.location.country}`;
             temp_c.textContent = `Temp_C: ${weatherData.current.temp_c}`;
+            localtime.textContent = `localtime: ${weatherData.location.localtime}`;
+            condition.textContent = `Condition: ${weatherData.current.condition.text}`;
             //src attribute of weather icon
             weatherIcon.src = `${weatherData.current.condition.icon}`;
-            weatherType.textContent = `Condition: ${weatherData.current.condition.text}`;
-            localtime.textContent = `localtime: ${weatherData.location.localtime}`;
           } catch (error) {
             console.log("failed to fetch weather data", error);
           }
