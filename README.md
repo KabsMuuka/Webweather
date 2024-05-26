@@ -20,6 +20,16 @@ temp_C DECIMAL(5, 2) NOT NULL,
 `text` VARCHAR(256) NOT NULL  
 );
 
+CREATE TABLE favoriteCity(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(256) NOT NULL,
+region VARCHAR(256) NOT NULL,
+country VARCHAR(256) NOT NULL,
+`localtime` DATETIME NOT NULL,
+temp_C DECIMAL(5, 2) NOT NULL,
+`text` VARCHAR(256) NOT NULL  
+);
+
 Then
 cd into backend
 1.npm install

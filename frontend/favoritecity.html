@@ -10,14 +10,46 @@
     <div class="container">
       <header>
         <p class="title">Weather App</p>
-        <p class="citation">
-          Weather api Provided By https://www.weatherapi.com/
-        </p>
+        <p class="citation">Weather api Provided By weatherapi.com/</p>
       </header>
+      <a href="./index.html"><button>back</button></a>
 
-      <h1>reterived data</h1>
+      <main>
+        <h2 id="title_header">Weather data per favorite City</h2>
+        <div id="weatherResults"></div>
+      </main>
 
-      <main></main>
+      <script>
+        const weatherResults = document.getElementById("weatherResults");
+        //fetching weather data saved in the databaase
+        async function fetchData() {
+          try {
+            const response = await fetch("http://localhost:3000/favoriteCity");
+            const weatherResponse = await response.json();
+            //iterating an array of objects fetched from DB containing weatherResponse data.
+            weatherResponse.forEach((weather) => {
+              //create weather card div element
+              const weathercard = document.createElement("div");
+              weathercard.classList.add("weather_card");
+
+              //for each weather_card show the following information
+              weathercard.innerHTML = `
+            <p><strong>City :</strong> ${weather.name}</p>
+            <p><strong>Country :</strong> ${weather.country}</p>
+            <p><strong>Temp_c :</strong>  ${weather.temp_C} 'c</p>
+            <p><strong>Condition :</strong>  ${weather.text}</p>
+            <p><strong>Local time :</strong> ${new Date(
+              weather.localtime
+            ).toLocaleString()}</p>
+             `;
+              weatherResults.appendChild(weathercard);
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        fetchData();
+      </script>
 
       <footer>
         <p>&copy 2024</p>

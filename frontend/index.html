@@ -12,19 +12,19 @@
         <p class="title">Weather App</p>
         <p class="citation">Weather api Provided By weatherapi.com/</p>
       </header>
+
       <main>
+        <p id="favCity">Favorite city saved ...</p>
         <ul>
           <li>
             <a href="./favoritecity.html"><p class="">Favorite Cities</p></a>
           </li>
           <li>
-            <a href="./allStoredWeather.html"> <p class="">All Cities</p></a>
+            <a href="./all_cities.html"> <p class="">All Cities</p></a>
           </li>
         </ul>
+
         <form id="weatherForm">
-          <div id="loading-bar" class="loading-bar">
-            <div class="loading-progress"></div>
-          </div>
           <input
             type="text"
             id="city"
@@ -32,9 +32,10 @@
             placeholder="city name"
             required
           />
-          <button id="button" type="submit">search</button>
-
-          <button id="saveFav">save favorite city</button>
+          <button id="search" type="submit">search</button>
+          <!-- favCity btn -->
+          <button id="saveFavBtn">save fav City</button>
+          <!-- favCity btn -->
         </form>
 
         <div id="weatherResult">
@@ -51,7 +52,10 @@
 
       <script>
         const weatherForm = document.getElementById("weatherForm");
+        //invisible elements until a weather data is fetched completely
         const loading = document.getElementById("loading");
+        const favCity = document.getElementById("favCity");
+        //end
         const weatherInf = document.getElementById("weatherInf");
         const cityName = document.getElementById("cityName");
         const country = document.getElementById("country");
@@ -59,28 +63,32 @@
         const weatherIcon = document.getElementById("weatherIcon");
         const weatherType = document.getElementById("weatherType");
         const localtime = document.getElementById("localtime");
-        const button = document.getElementById("button");
+        const search = document.getElementById("search");
+        const saveFavBtn = document.getElementById("saveFavBtn");
 
-        weatherForm.addEventListener("submit", async function (event) {
+        //when search button is clicked, fetch API sends a POST request to a server running at `port 3000`.
+        search.addEventListener("click", async function (event) {
           event.preventDefault();
           loading.style.display = "block";
           try {
-            const city = document.getElementById("city").value; //user input city name
-            //fetch weather data for the backend
+            // grabing user input city name
+            const city = document.getElementById("city").value;
+            //fetch weather data from the backend
             const response = await fetch("http://localhost:3000/api/weather", {
-              method: "POST",
+              method: "POST", //making a post request to the server
               headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json", //sends data in JSON format
               },
-              body: JSON.stringify({ city }), //on on the server side, req.body will be used to access city
+              body: JSON.stringify({ city }), //JavaScript object {city} is converted into JSON string, and appends city to `body`
             });
             const weatherData = await response.json();
-            //if weather is true
+            //if weatherData is true
             if (weatherData) {
-              weatherInf.style.display = "block"; //make weweatherInformation visible
-              loading.style.display = "none"; //hide loading after weather data is fetched
+              weatherInf.style.display = "block"; //make weatherInformation visible
+              loading.style.display = "none"; //hide loading status after weather data is fetched
+              saveFavBtn.style.display = "block"; //make favorite button visible after fetching data
             }
-
+            //assigning weather data to specific variables or <p> tags
             cityName.textContent = `City: ${weatherData.location.name}`;
             country.textContent = `Country: ${weatherData.location.country}`;
             temp_c.textContent = `Temp_C: ${weatherData.current.temp_c}`;
@@ -92,6 +100,31 @@
             console.log("failed to fetch weather data", error);
           }
         });
+
+        //when fav button is clicked save favCity
+        saveFavBtn.addEventListener("click", async (event) => {
+          event.preventDefault();
+          favCity.style.display = "block";
+
+          try {
+            const city = document.getElementById("city").value; //user input city name
+            //fetch weather data for the backend
+            const response = await fetch("http://localhost:3000/favoriteCity", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ city }), //pass city to body,  req.body will be used to access city on the server.js
+            });
+            const weatherData = response.json();
+            if (weatherData) {
+              favCity.style.display = "none";
+            }
+          } catch (error) {
+            console.log("failed to fetch weather data", error);
+          }
+        });
+
         //datasaving weather data into the database
       </script>
 

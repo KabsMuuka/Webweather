@@ -23,10 +23,47 @@ header {
   text-align: end;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+/* hidden content */
+
+/* hidden content */
+
+a {
+  padding: 4px;
+}
+button {
+  width: 70px;
+  height: 25px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+h2 {
+  text-align: center;
+}
 
 main {
   flex-grow: 1;
   padding: 15px;
+}
+#weatherResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.weather_card {
+  width: 50%;
+  margin: 0, auto;
+  border: 1px solid #ccc;
+  background-color: rgba(230, 230, 230, 0.574);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px;
+  text-align: center;
+}
+div > p {
+  display: flex;
+  background-color: #e6e6e6;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 footer {
@@ -34,4 +71,5 @@ footer {
   flex-direction: column;
   align-items: center;
   background-color: grey;
+  border-radius: 6px;
 }
