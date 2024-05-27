@@ -10,7 +10,7 @@
     <div class="container">
       <header>
         <p class="title">Weather App</p>
-        <p class="citation">Weather api Provided By weatherapi.com/</p>
+        <p class="citation">Weather api Provided By weatherapi.com</p>
       </header>
       <a href="./index.html"><button>back</button></a>
 
@@ -26,28 +26,70 @@
           async function fetchData() {
             const response = await fetch("http://localhost:3000/storedData");
             const weatherResponse = await response.json();
+
+            const numberOfCities = document.createElement("div");
+            numberOfCities.classList.add("numberOfCities");
+            numberOfCities.innerHTML = `<p> Saved cities ${weatherResponse.length} </p>`;
+            weatherResults.appendChild(numberOfCities);
+
             //iterating an array of objects fetched from DB containing weatherResponse data.
             weatherResponse.forEach((weather) => {
               //create weathercard div element
+
               const weathercard = document.createElement("div");
               weathercard.classList.add("weather_card");
+
+              //delete button
+              const deleteBtn = document.createElement("button");
+              deleteBtn.textContent = "delete";
+              deleteBtn.classList.add("deleteBtn");
+              deleteBtn.addEventListener("click", async (event) => {
+                event.preventDefault(false);
+                //DELETE END POINT FROM THE DATABASE
+                const response = await fetch(
+                  `http://localhost:3000/deleteFromAllCities`,
+                  {
+                    method: "DELETE",
+                    headers: {
+                      "content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: weather.id }),
+                  }
+                );
+                //remove weathercard
+                if (response.ok) {
+                  weathercard.remove(); //remove weathercard from the page
+                } else {
+                  const result = await response.json();
+                  console.error(
+                    "Failed to delete the weather card:",
+                    result.message
+                  );
+                }
+              });
+              //end
+
               //for each weather_card show the following information
               weathercard.innerHTML = `
             <p><strong>City :</strong> ${weather.name}</p>
             <p><strong>Country :</strong> ${weather.country}</p>
-            <p><strong>Temp_c :</strong>  ${weather.temp_C} 'c</p>
+            <p><strong>Temp_c :</strong>  ${weather.temp_C} *c</p>
             <p><strong>Condition :</strong>  ${weather.text}</p>
             <p><strong>Local time :</strong> ${new Date(
               weather.localtime
             ).toLocaleString()}</p>
              `;
+              //add a delete button to each card
+              weathercard.appendChild(deleteBtn);
+              //render results on each card
               weatherResults.appendChild(weathercard);
             });
           }
+
+          fetchData();
         } catch (error) {
           console.log(error);
         }
-        fetchData();
       </script>
 
       <footer>

@@ -10,7 +10,7 @@
     <div class="container">
       <header>
         <p class="title">Weather App</p>
-        <p class="citation">Weather api Provided By weatherapi.com/</p>
+        <p class="citation">Weather api Provided By weatherapi.com</p>
       </header>
 
       <main>
@@ -41,6 +41,7 @@
         <div id="weatherResult">
           <h3 id="weatherInf">Weather Information</h3>
           <p id="loading">loading ...</p>
+          <p id="errorMessage">Provide city name to proceed ...</p>
           <p id="cityName"></p>
           <p id="country"></p>
           <p id="temp_c"></p>
@@ -65,6 +66,7 @@
         const search = document.getElementById("search");
         const saveFavBtn = document.getElementById("saveFavBtn");
         const weatherIcon = document.getElementById("weatherIcon");
+        const errorMessage = document.getElementById("errorMessage");
 
         //when search button is clicked, fetch API sends a POST request to a server running at `port 3000`.
         search.addEventListener("click", async function (event) {
@@ -73,6 +75,11 @@
           try {
             // grabing user input city name
             const city = document.getElementById("city").value;
+            //show error if !city
+            if (!city) {
+              errorMessage.style.display = "block";
+              return;
+            }
             //fetch weather data from the backend
             const response = await fetch("http://localhost:3000/api/weather", {
               method: "POST", //making a post request to the server
@@ -87,6 +94,7 @@
               weatherInf.style.display = "block"; //make weatherInformation visible
               loading.style.display = "none"; //hide loading status after weather data is fetched
               saveFavBtn.style.display = "block"; //make favorite button visible after fetching data
+              errorMessage.style.display = "none"; //hide error message
             }
             //assigning weather data to specific variables or <p> tags
             cityName.textContent = `City: ${weatherData.location.name}`;
@@ -124,8 +132,6 @@
             console.log("failed to fetch weather data", error);
           }
         });
-
-        //datasaving weather data into the database
       </script>
 
       <footer>

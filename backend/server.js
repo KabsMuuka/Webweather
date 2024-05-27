@@ -112,6 +112,78 @@ app.get("/favoriteCity", (req, res) => {
   });
 });
 
+//Delete end point from cities database table
+app.delete("/deleteFromAllCities", (req, res) => {
+  const { id } = req.body; // id from a specific weather card
+
+  //check if id valid
+  if (!id) {
+    return res.status(400).json({ message: "ID is required" });
+  }
+  connection.query(
+    `SELECT * FROM cities WHERE id = ?`,
+    [id],
+    (error, results) => {
+      if (error) {
+        return res.status(500).json({ message: "Database query error" });
+      }
+      if (results.length > 0) {
+        //delete id that matches client id button
+        connection.query(`DELETE FROM cities WHERE id = ?`, [id], (error) => {
+          if (error) {
+            return res
+              .status(500)
+              .json({ message: "Failed to delete the weather card" });
+          }
+          return res
+            .status(200)
+            .json({ message: "Weather card deleted successfully" });
+        });
+      } else {
+        return res.status(404).json({ message: "ID not found" });
+      }
+    }
+  );
+});
+
+////Delete end point from favorite city database table
+app.delete("/deleteFromFavoriteCity", (req, res) => {
+  const { id } = req.body; // id from a specific weather card
+
+  //check if id valid
+  if (!id) {
+    return res.status(400).json({ message: "ID is required" });
+  }
+  connection.query(
+    `SELECT * FROM favoriteCity WHERE id = ?`,
+    [id],
+    (error, results) => {
+      if (error) {
+        return res.status(500).json({ message: "Database query error" });
+      }
+      if (results.length > 0) {
+        //delete id that matches client id button
+        connection.query(
+          `DELETE FROM favoriteCity WHERE id = ?`,
+          [id],
+          (error) => {
+            if (error) {
+              return res
+                .status(500)
+                .json({ message: "Failed to delete the weather card" });
+            }
+            return res
+              .status(200)
+              .json({ message: "Weather card deleted successfully" });
+          }
+        );
+      } else {
+        return res.status(404).json({ message: "ID not found" });
+      }
+    }
+  );
+});
+
 //listening on port 3000
 app.listen(port, () => {
   //establishing a connection to mysql2 database
