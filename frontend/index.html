@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
+    <!-- favicon in windows tab -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA0V---fS_uSt0XqPihGqaGbPlIjLeGqDwFTECj_LBGQ&s"
+    />
     <title>weatherApp</title>
   </head>
   <body>
@@ -25,13 +31,7 @@
         </ul>
 
         <form id="weatherForm">
-          <input
-            type="text"
-            id="city"
-            name="city"
-            placeholder="city name"
-            required
-          />
+          <input type="text" id="city" name="city" placeholder="city name" />
           <button id="search" type="submit">search</button>
           <!-- favCity btn -->
           <button id="saveFavBtn">save fav City</button>
@@ -69,7 +69,7 @@
         const errorMessage = document.getElementById("errorMessage");
 
         //when search button is clicked, fetch API sends a POST request to a server running at `port 3000`.
-        search.addEventListener("click", async function (event) {
+        search.addEventListener("click", async (event) => {
           event.preventDefault();
           loading.style.display = "block";
           try {
@@ -78,6 +78,11 @@
             //show error if !city
             if (!city) {
               errorMessage.style.display = "block";
+              //hide error message after 1.5s
+              setTimeout(() => {
+                errorMessage.style.display = "none";
+                loading.style.display = "none";
+              }, 1500);
               return;
             }
             //fetch weather data from the backend
@@ -94,12 +99,11 @@
               weatherInf.style.display = "block"; //make weatherInformation visible
               loading.style.display = "none"; //hide loading status after weather data is fetched
               saveFavBtn.style.display = "block"; //make favorite button visible after fetching data
-              errorMessage.style.display = "none"; //hide error message
             }
             //assigning weather data to specific variables or <p> tags
             cityName.textContent = `City: ${weatherData.location.name}`;
             country.textContent = `Country: ${weatherData.location.country}`;
-            temp_c.textContent = `Temp_C: ${weatherData.current.temp_c}`;
+            temp_c.textContent = `Temperature: ${weatherData.current.temp_c} *C`;
             localtime.textContent = `localtime: ${weatherData.location.localtime}`;
             condition.textContent = `Condition: ${weatherData.current.condition.text}`;
             //src attribute of weather icon

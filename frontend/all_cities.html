@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/all_cities.css" />
-    <title>reterived data</title>
+    <!-- favicon in windows tab -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA0V---fS_uSt0XqPihGqaGbPlIjLeGqDwFTECj_LBGQ&s"
+    />
+    <title>all-cities</title>
   </head>
   <body>
     <div class="container">
@@ -15,7 +21,6 @@
       <a href="./index.html"><button>back</button></a>
 
       <main>
-        <h2 id="title_header">Weather data per City</h2>
         <div id="weatherResults"></div>
       </main>
 
@@ -41,7 +46,7 @@
 
               //delete button
               const deleteBtn = document.createElement("button");
-              deleteBtn.textContent = "delete";
+              deleteBtn.textContent = "Erase";
               deleteBtn.classList.add("deleteBtn");
               deleteBtn.addEventListener("click", async (event) => {
                 event.preventDefault(false);
@@ -73,7 +78,7 @@
               weathercard.innerHTML = `
             <p><strong>City :</strong> ${weather.name}</p>
             <p><strong>Country :</strong> ${weather.country}</p>
-            <p><strong>Temp_c :</strong>  ${weather.temp_C} *c</p>
+            <p><strong>Temperature :</strong>  ${weather.temp_C} *C</p>
             <p><strong>Condition :</strong>  ${weather.text}</p>
             <p><strong>Local time :</strong> ${new Date(
               weather.localtime

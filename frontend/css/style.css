@@ -2,6 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background-image: url("https://img.freepik.com/free-photo/photorealistic-style-clouds_23-2151058968.jpg");
 }
 .container {
   display: flex;
@@ -13,6 +14,7 @@ header {
   display: flex;
   background-color: #e7eaea;
   padding: 5px;
+  border-radius: 8px;
 }
 .title {
   flex-grow: 1;
@@ -29,31 +31,37 @@ header {
 }
 a {
   display: flex;
+  font-weight: bold;
+  color: rgb(226, 226, 226);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+/* Hiding display element and making them visbie if condition is true*/
+
 h3 {
+  display: none;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-/* Hiding display element and making them visbie if condition is true*/
-h3 {
-  display: none;
-}
+
 #loading {
   display: none;
 }
 
 #favCity {
   display: none;
+  font-weight: 800;
   text-align: center;
+  color: #0cac2a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 #saveFavBtn {
   display: none;
 }
 #errorMessage {
   display: none;
-  color: red;
+  color: rgb(186, 26, 26);
 }
 /*End of Hide */
 
@@ -68,7 +76,7 @@ main {
   padding: 5px;
 }
 input {
-  width: 30%;
+  width: 25%;
   height: 28px;
   border: solid, rgb(96, 164, 224);
   border-radius: 5px;
@@ -88,7 +96,7 @@ button {
 }
 /* weather Information */
 #weatherResult {
-  width: 70%;
+  width: 60%;
   background-color: rgba(230, 230, 230, 0.574);
   margin: 0 auto;
   border: 1px solid #ccc;
@@ -136,5 +144,8 @@ footer {
 @media screen and (max-width: 640px) {
   input {
     width: 50%;
+  }
+  #weatherResult {
+    width: 90%;
   }
 }
