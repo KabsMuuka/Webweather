@@ -47,4 +47,4 @@ npm run start <br>
 
 Finally <br>
 cd into frontend <br>
-run index.html //you can open the file using any broswer, `it should work`, or using live server E.g. vscode.
+run index.html //you can open the file using any broswer, `it should work`, or using live server E.g. in vscode.
