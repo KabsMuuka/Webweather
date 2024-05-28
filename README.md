@@ -1,11 +1,20 @@
 #Weather App
 
-It Dynamically fetches weather data of any specified City in the World.
-
-When a User enters a preffered City, the backend gets a weather api and append a city name at the end. If City Name is valid, It goes ahead and send that data back to the User or Client.
-
-NOTE BEFORE DOING ANYTHNG
-Copy paste the following in Mysql commandline
+It Dynamically fetches weather infromation data of any specified City in the World.
+<br>
+<br>
+When a User enters a preffered City, the backend via a weather api, appends that city name at the end of it, if City name is valid, It goes ahead and grabs the weather infomation about the specified city, and sends that data back to a user.
+<br>
+<br>
+NOTE BEFORE DOING ANYTHNG!!!
+Copy paste the following in SQL Mysql commandline.
+<br>
+<br>
+Below are two database tables that will be used to store weather information data.
+<br>
+<br>
+cities, favoriteCity respectively.
+<br>
 
 CREATE DATABASE weatherApp;
 USE weatherApp;
@@ -30,11 +39,12 @@ temp_C DECIMAL(5, 2) NOT NULL,
 `text` VARCHAR(256) NOT NULL  
 );
 
-Then
-cd into backend
-1.npm install
-2.npm run start //http://localhost:3000
+Then <br>
+cd into backend <br>
+Open the terminal and run the following commands <br>
+npm install <br>
+npm run start <br>
 
-Then
-cd into frontend
-run index.html
+Finally <br>
+cd into frontend <br>
+run index.html //you can open the file using any broswer, `it should work`, or using live server E.g. vscode.
