@@ -43,7 +43,7 @@ a {
   border-radius: 4px;
 }
 .a:hover {
-  background-color: rgb(59, 113, 222);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
 }
 /* Hiding display element and making them visbie if condition is true*/
 
@@ -61,7 +61,7 @@ h3 {
   display: none;
   font-weight: 800;
   text-align: center;
-  color: #0cac2a;
+  color: #0056b3b8;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
