@@ -18,42 +18,37 @@ header {
 }
 .title {
   flex-grow: 1;
-  text-align: start;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-.citation {
   text-align: end;
+  font-weight: 600;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-/* hidden content */
 
 /* hidden content */
 
+/* hidden content */
 a {
-  width: 5%;
+  margin-left: 16px;
+  display: flex;
+  display: inline-block;
   text-decoration: none;
-  padding: 4px;
+  font-weight: 600;
+  color: rgb(226, 226, 226);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  transition: 1s;
 }
-a > button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
+.a {
+  padding: 2px;
   transition: 1s;
-  font-weight: bold;
+  border-radius: 4px;
+  color: white;
+  background-color: royalblue;
+}
+.a:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
 }
 
-button:hover {
-  background-color: rgb(109, 109, 109);
-}
 .numberOfCities {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -61,8 +56,10 @@ button:hover {
 .deleteBtn {
   border-radius: 10px;
   background-color: rgb(136, 136, 136);
+  cursor: pointer;
   border: none;
-  font-weight: bold;
+  background-color: rgb(49, 43, 43);
+  color: white;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   transition: 1s;
