@@ -7,7 +7,7 @@ When a User enters a preffered City, the backend via a weather api, appends that
 <br>
 <br>
 NOTE BEFORE DOING ANYTHNG!!!
-Copy paste the following in SQL Mysql commandline.
+Copy paste the following SQL in Mysql commandline.
 <br>
 <br>
 Below are two database tables that will be used to store weather information data.

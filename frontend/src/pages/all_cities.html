@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/all_cities.css" />
+    <link rel="stylesheet" href="../styles/all_cities.css" />
     <!-- favicon in windows tab -->
     <link
       rel="icon"
@@ -15,8 +15,10 @@
   <body>
     <div class="container">
       <header>
-        <a href="./index.html"> <p class="a">Home</p></a>
-        <a href="./favoritecity.html"><p class="a">Favorite Cities</p></a>
+        <a href="/frontend/public/index.html"> <p class="a">Home</p></a>
+        <a href="../pages/favoritecity.html"
+          ><p class="a">Favorite Cities</p></a
+        >
         <p class="title">Weather App</p>
       </header>
 
@@ -29,7 +31,7 @@
           const weatherResults = document.getElementById("weatherResults");
           //fetching weather data saved in the databaase
           async function fetchData() {
-            const response = await fetch("http://localhost:3000/storedData");
+            const response = await fetch("http://localhost:3000/cities");
             const weatherResponse = await response.json();
 
             const numberOfCities = document.createElement("div");

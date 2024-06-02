@@ -1,8 +1,10 @@
-Copy paste the following in Mysql commandline
+--Copy paste the following in Mysql commandline
+
 
 CREATE DATABASE weatherApp;
 
 USE weatherApp;
+--city  
 
 CREATE TABLE cities( 
     id INT AUTO_INCREMENT PRIMARY KEY,
