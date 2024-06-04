@@ -1,4 +1,4 @@
-const connection = require("../db/database");
+const connection = require("../db/databaseConnection");
 
 const postCityName = async (req, res) => {
   const { city } = req.body;
@@ -37,9 +37,9 @@ const postCityName = async (req, res) => {
         }
       });
   } catch (error) {
-    res
-      .status(404)
-      .json({ error: `Specified city name : ${city} Not found` }, error);
+    res.status(500).json({
+      error: `Cannot find ${city} provided. Check your internet connection.`,
+    });
   }
 };
 
@@ -80,9 +80,9 @@ const postFavCity = async (req, res) => {
         }
       });
   } catch (error) {
-    res
-      .status(404)
-      .json({ error: `Specified city name : ${city} Not found` }, error);
+    res.status(500).json({
+      error: `Cannot find ${city} provided. Check your internet connection.`,
+    });
   }
 };
 

@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-image: url("https://img.freepik.com/free-photo/photorealistic-style-clouds_23-2151058968.jpg");
+  background-color: #d5d5d5;
 }
 .container {
   display: flex;
@@ -24,27 +24,37 @@ header {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-
+/* General Anchor Styling */
 a {
   margin-left: 16px;
-  display: flex;
   display: inline-block;
   text-decoration: none;
   font-weight: 600;
   color: rgb(226, 226, 226);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: color 0.3s ease-in-out;
 }
+
+a:hover {
+  color: #fff;
+}
+
+/* Specific Anchor Styling with Class .a */
 .a {
-  padding: 2px;
-  transition: 1s;
+  padding: 6px 12px;
+  transition: background-color 0.3s, box-shadow 0.3s;
   border-radius: 4px;
   color: white;
   background-color: royalblue;
+  transition: 1s;
 }
+
 .a:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  background-color: darkblue;
 }
+
 /* Hiding display element and making them visbie if condition is true*/
 
 h3 {
@@ -72,6 +82,7 @@ h3 {
   display: none;
   color: rgb(186, 26, 26);
 }
+
 /*End of Hide */
 
 main {
@@ -84,59 +95,93 @@ main {
   justify-content: center;
   padding: 5px;
 }
+/* Input Styling */
 input {
-  width: 25%;
-  height: 28px;
-  border: solid, rgb(96, 164, 224);
+  width: 80%;
+  max-width: 300px;
+  height: 30px;
+  padding: 5px 10px;
+  border: 2px solid rgb(96, 164, 224);
   border-radius: 5px;
-  font-size: large;
-  transition: border-color 1s ease-in-out;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   outline: none;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
 input:focus {
   border-color: rgb(129, 94, 218);
+  box-shadow: 0 0 8px rgba(129, 94, 218, 0.5);
 }
+
+/* Button Styling */
 button {
-  height: 34px;
-  margin-left: 2px;
+  height: 40px;
+  padding: 0 20px;
+  margin-left: 10px;
   border: none;
   background-color: #007bff;
   color: white;
   cursor: pointer;
   border-radius: 5px;
-
+  font-size: 16px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  transition: 1s;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
 }
 
 button:hover {
   background-color: #0056b3; /* Darker background on hover */
+  transform: translateY(-2px);
 }
 
 /* weather Information */
 #weatherResult {
-  width: 60%;
-  background-color: rgba(230, 230, 230, 0.574);
-  margin: 0 auto;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  background-color: #f9f9f9; /* Light gray background */
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   text-align: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#weatherResult:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 #weatherResult p {
   margin: 10px 0;
+  font-size: 16px;
+  color: #333;
 }
 
 #weatherResult img {
-  max-width: 80px;
+  max-width: 100px;
   display: block;
-  margin: auto;
+  margin: 20px auto;
+}
+
+.weather-detail {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 245, 245);
+  justify-content: center;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.weather-detail span {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 #cityName,
@@ -145,29 +190,49 @@ button:hover {
 #temp_c,
 #condition,
 #localtime {
-  display: flex;
-  background-color: rgb(230, 230, 230);
-  justify-content: center;
-  padding: 10px;
-  border-radius: 10px;
+  margin: 5px 0;
 }
 /* End of weather Information */
 
+/* Footer styling */
 footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: grey;
+  justify-content: center;
+  padding: 20px;
+  background-color: #55595f;
+  color: white;
   border-radius: 6px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+
+  text-align: center;
+  transition: background-color 0.3s ease-in-out; /* Smooth transition for background color */
+}
+
+footer p {
+  margin: 5px 0; /* Adjust margin for paragraphs */
 }
 
 @media screen and (max-width: 640px) {
   input {
     width: 50%;
   }
-  #weatherResult {
-    width: 90%;
+
+  button {
+    padding: 0 30px;
+    font-size: 13px;
+  }
+
+  .weather-detail {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+  footer {
+    height: 100px;
+    padding: 10px;
   }
 }

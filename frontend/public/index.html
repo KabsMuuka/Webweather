@@ -29,7 +29,7 @@
           <input type="text" id="city" name="city" placeholder="city name" />
           <button id="search" type="submit">Search</button>
           <!-- favCity btn -->
-          <button id="saveFavBtn">Save fav City</button>
+          <button id="saveFavBtn">Save favCity</button>
           <!-- favCity btn -->
         </form>
 
@@ -67,6 +67,7 @@
         search.addEventListener("click", async (event) => {
           event.preventDefault();
           loading.style.display = "block";
+
           try {
             // grabing user input city name
             const city = document.getElementById("city").value;
@@ -88,13 +89,15 @@
               },
               body: JSON.stringify({ city }), //JavaScript object {city} is converted into JSON string, and appends city to `body`
             });
+
             const weatherData = await response.json();
-            //if weatherData is true
+            //if condition is true
             if (weatherData) {
               weatherInf.style.display = "block"; //make weatherInformation visible
               loading.style.display = "none"; //hide loading status after weather data is fetched
               saveFavBtn.style.display = "block"; //make favorite button visible after fetching data
             }
+
             //assigning weather data to specific variables or <p> tags
             cityName.textContent = `City: ${weatherData.location.name}`;
             country.textContent = `Country: ${weatherData.location.country}`;
@@ -134,7 +137,7 @@
       </script>
 
       <footer>
-        <p>&copy 2024 <br />Weather api provided by weather.com</p>
+        <p>&copy 2024 <br />Weather api provided by weatherapi.com</p>
       </footer>
     </div>
   </body>

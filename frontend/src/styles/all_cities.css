@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-image: url("https://img.freepik.com/free-photo/photorealistic-style-clouds_23-2151058968.jpg");
+  background-color: #d5d5d5;
 }
 .container {
   display: flex;
@@ -25,28 +25,34 @@ header {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-/* hidden content */
-
-/* hidden content */
 a {
   margin-left: 16px;
-  display: flex;
   display: inline-block;
   text-decoration: none;
   font-weight: 600;
   color: rgb(226, 226, 226);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: color 0.3s ease-in-out;
 }
+
+a:hover {
+  color: #fff;
+}
+
+/* Specific Anchor Styling with Class .a */
 .a {
-  padding: 2px;
-  transition: 1s;
+  padding: 6px 12px;
+  transition: background-color 0.3s, box-shadow 0.3s;
   border-radius: 4px;
   color: white;
   background-color: royalblue;
+  transition: 1s;
 }
+
 .a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+  background-color: darkblue;
 }
 
 .numberOfCities {
@@ -56,6 +62,7 @@ a {
 /* deleteBtn per saved weather card */
 .deleteBtn {
   border-radius: 10px;
+  padding: 6px 12px;
   background-color: rgb(49, 43, 43);
   border: none;
   cursor: pointer;
@@ -72,23 +79,43 @@ main {
   flex-grow: 1;
   padding: 15px;
 }
+
+/* .weather_results  */
+/* Container for weather results */
 #weatherResults {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 }
+
+/* Weather card styling */
 .weather_card {
-  width: 50%;
-  margin: 0, auto;
+  width: 80%;
+  max-width: 600px;
+  margin: 8px auto; /* Corrected margin syntax */
   border: 1px solid #ccc;
-  background-color: rgba(230, 230, 230, 0.574);
-  border-radius: 8px;
-  padding: 10px;
-  margin: 8px;
+  background-color: rgba(
+    230,
+    230,
+    230,
+    0.9
+  ); /* Slightly more opaque for better readability */
+  border-radius: 10px; /* Increased border-radius for a more modern look */
+  padding: 20px;
   text-align: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box-shadow for a subtle 3D effect */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effects */
 }
+
+.weather_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* .weather_results  */
 div > p {
   display: flex;
   background-color: #e6e6e6;
@@ -96,12 +123,39 @@ div > p {
   border-radius: 10px;
 }
 
+/* Footer styling */
 footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: grey;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #55595f;
+  color: white;
   border-radius: 6px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Push footer to the bottom of the page */
+  text-align: center;
+  transition: background-color 0.3s ease-in-out; /* Smooth transition for background color */
+}
+
+footer p {
+  margin: 5px 0; /* Adjust margin for paragraphs */
+}
+
+@media screen and (max-width: 640px) {
+  footer {
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    border-radius: 6px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+  }
 }

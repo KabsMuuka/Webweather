@@ -1,6 +1,7 @@
 const express = require("express");
 const route = express.Router();
 
+//imported from controller.js
 const {
   postCityName,
   postFavCity,
@@ -10,6 +11,7 @@ const {
   deleteFavoriteCity,
 } = require("../controller/controller");
 
+//defines each route path
 route.post("/api/weather", postCityName);
 route.post("/favoriteCity", postFavCity);
 route.get("/cities", getCities);

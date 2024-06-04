@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const connection = require("./db/database");
+const connection = require("./db/databaseConnection");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const route = require("./route/routes");
-const port = 3000;
+const port = process.env.PORT;
 
 //middleware
 app.use(cors());
