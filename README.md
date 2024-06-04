@@ -7,8 +7,10 @@ When a User enters a preffered City, the backend via a weather api, appends that
 <br>
 <br>
 NOTE BEFORE DOING ANYTHNG!!!
-Copy paste the following SQL database Tables in Mysql commandline.
-<br>
+Copy paste the following SQL database Tables in Mysql commandline. <br>
+
+--starting here
+
 CREATE DATABASE weatherApp;
 USE weatherApp;
 
@@ -32,8 +34,12 @@ temp_C DECIMAL(5, 2) NOT NULL,
 `text` VARCHAR(256) NOT NULL  
 );
 
-Then <br>
-cd into backend <br>
+--end
+
+<br>
+If mysql you are using has a requires passcode to access, cd into backend/db and edit databaseConnection.js to set passcode
+<br>
+while in backend <br>
 Open the terminal and run the following commands <br>
 npm install <br>
 npm run start <br>
