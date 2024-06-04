@@ -118,6 +118,17 @@
 
           try {
             const city = document.getElementById("city").value; //user input city name
+            //show error if !city
+            if (!city) {
+              errorMessage.style.display = "block";
+              favCity.style.display = "none";
+              //hide error message after 1.5s
+              setTimeout(() => {
+                errorMessage.style.display = "none";
+                loading.style.display = "none";
+              }, 1500);
+              return;
+            }
             //fetch weather data for the backend
             const response = await fetch("http://localhost:3000/favoriteCity", {
               method: "POST",
