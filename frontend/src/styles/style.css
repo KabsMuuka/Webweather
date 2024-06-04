@@ -80,7 +80,7 @@ h3 {
 }
 #errorMessage {
   display: none;
-  color: rgb(186, 26, 26);
+  color: red !important;
 }
 
 /*End of Hide */
