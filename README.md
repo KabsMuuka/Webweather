@@ -37,7 +37,7 @@ temp_C DECIMAL(5, 2) NOT NULL,
 --end
 
 <br>
-If mysql you are using has a requires passcode to access, cd into backend/db and edit databaseConnection.js to set passcode
+If mysql you are using requires a passcode to access it, cd into backend/db and edit databaseConnection.js to set passcode
 <br>
 while in backend <br>
 Open the terminal and run the following commands <br>
