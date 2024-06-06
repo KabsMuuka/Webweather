@@ -44,6 +44,8 @@
           <p id="condition"></p>
           <img id="weatherIcon" src="" />
         </div>
+
+        <div id="Demo_information"></div>
       </main>
 
       <script>
@@ -62,6 +64,8 @@
         const saveFavBtn = document.getElementById("saveFavBtn");
         const weatherIcon = document.getElementById("weatherIcon");
         const errorMessage = document.getElementById("errorMessage");
+
+        const Demo_information = document.getElementById("Demo_information");
 
         //when search button is clicked, fetch API sends a POST request to a server running at `port 3000`.
         search.addEventListener("click", async (event) => {
@@ -145,6 +149,71 @@
             console.log("failed to fetch weather data", error);
           }
         });
+
+        //predefined weather data below
+        const defined_weather_information = [
+          {
+            cityName: "New York",
+            country: "USA",
+            temp_C: "25",
+            localtime: "2024-06-06 12:00",
+            condition: "Sunny",
+            weatherIcon: "https://cdn.weatherapi.com/weather/64x64/day/113.png",
+          },
+          {
+            cityName: "London",
+            country: "UK",
+            temp_C: "18",
+            localtime: "2024-06-06 17:00",
+            condition: "Cloudy",
+            weatherIcon:
+              "https://cdn.weatherapi.com/weather/64x64/night/122.png",
+          },
+          {
+            cityName: "Tokyo",
+            country: "Japan",
+            temp_C: "22",
+            localtime: "2024-06-07 02:00",
+            condition: "Rainy",
+            weatherIcon: "https://cdn.weatherapi.com/weather/64x64/day/302.png",
+          },
+        ];
+
+        //defined_weather_information container
+
+        defined_weather_information.forEach((weather) => {
+          console.log(weather);
+          const weatherDiv = document.createElement("div");
+
+          const cityName = document.createElement("p");
+          cityName.textContent = `City: ${weather.cityName}`;
+
+          const country = document.createElement("p");
+          country.textContent = `Country: ${weather.country}`;
+
+          const tempC = document.createElement("p");
+          tempC.textContent = `Temperature: ${weather.temp_C}°C`;
+
+          const localtime = document.createElement("p");
+          localtime.textContent = `Local Time: ${weather.localtime}`;
+
+          const condition = document.createElement("p");
+          condition.textContent = `Condition: ${weather.condition}`;
+
+          const weatherIcon = document.createElement("img");
+          weatherIcon.src = weather.weatherIcon;
+          weatherIcon.alt = weather.condition;
+
+          weatherDiv.appendChild(cityName);
+          weatherDiv.appendChild(country);
+          weatherDiv.appendChild(tempC);
+          weatherDiv.appendChild(localtime);
+          weatherDiv.appendChild(condition);
+          weatherDiv.appendChild(weatherIcon);
+
+          Demo_information.appendChild(weatherDiv);
+        });
+        //end of predefined data
       </script>
 
       <footer>

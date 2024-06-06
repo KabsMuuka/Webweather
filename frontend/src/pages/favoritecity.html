@@ -48,7 +48,7 @@
               //delete button for each weathercard
               const deleteBtn = document.createElement("button");
               deleteBtn.classList.add("deleteBtn");
-              deleteBtn.textContent = "Erase";
+              deleteBtn.textContent = "Delete";
               //send weathercard id to the backend and erase when button is clicked
               deleteBtn.addEventListener("click", async () => {
                 const response = await fetch(
