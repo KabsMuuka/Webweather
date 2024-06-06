@@ -45,7 +45,9 @@
           <img id="weatherIcon" src="" />
         </div>
 
-        <div id="Demo_information"></div>
+        <div id="Demo_information">
+          <span id="defined_data"> Defined</span>
+        </div>
       </main>
 
       <script>
@@ -105,7 +107,7 @@
             //assigning weather data to specific variables or <p> tags
             cityName.textContent = `City: ${weatherData.location.name}`;
             country.textContent = `Country: ${weatherData.location.country}`;
-            temp_c.textContent = `Temperature: ${weatherData.current.temp_c} *C`;
+            temp_c.textContent = `Temperature: ${weatherData.current.temp_c} °C`;
             localtime.textContent = `localtime: ${weatherData.location.localtime}`;
             condition.textContent = `Condition: ${weatherData.current.condition.text}`;
             //src attribute of weather icon
@@ -161,8 +163,8 @@
             weatherIcon: "https://cdn.weatherapi.com/weather/64x64/day/113.png",
           },
           {
-            cityName: "London",
-            country: "UK",
+            cityName: "Harare",
+            country: "Zimbabwe",
             temp_C: "18",
             localtime: "2024-06-06 17:00",
             condition: "Cloudy",
@@ -170,8 +172,8 @@
               "https://cdn.weatherapi.com/weather/64x64/night/122.png",
           },
           {
-            cityName: "Tokyo",
-            country: "Japan",
+            cityName: "Lusaka",
+            country: "Zambia",
             temp_C: "22",
             localtime: "2024-06-07 02:00",
             condition: "Rainy",
@@ -182,7 +184,6 @@
         //defined_weather_information container
 
         defined_weather_information.forEach((weather) => {
-          console.log(weather);
           const weatherDiv = document.createElement("div");
 
           const cityName = document.createElement("p");
